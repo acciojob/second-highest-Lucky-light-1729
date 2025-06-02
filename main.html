@@ -11,31 +11,28 @@
 		function secondHighest(arr) 
 		{
 			//Write your code here
-			if (arr.length < 2) 
-			{
-		        return null; 
-		    }
-	
-			let first = -Infinity;
-			let second = -Infinity;
+		  arr = arr.map(Number); // ensure array is numeric
+		  if (arr.length < 2) return -Infinity;
 		
-			for (let num of arr) 
+		  let first = -Infinity;
+		  let second = -Infinity;
+		
+		  for (let num of arr) 
+		  {
+		    if (num > first) 
 			{
-				num = Number(num);
-				if (num > first) 
-				{
-					second = first;
-					first = num;
-				} 
-				else if (num > second && num < first) 
-				{
-					second = num;
-				}
-			}
-			
-			return (second === -Infinity) ? null : second;
+		      second = first;
+		      first = num;
+		    } 
+			else if (num > second && num < first) 
+			{
+		      second = num;
+		    }
+		  }
+		
+		  return second === -Infinity ? -Infinity : second;
 		}
-				
+
 
 		function Main() {
 			var n = prompt("Enter the number of elements");
